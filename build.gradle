@@ -1,0 +1,31 @@
+plugins {
+    id 'maven-publish'
+    id 'com.chillycheesy.modulo-application' version '1.2.1'
+}
+
+apply from: 'variables.gradle'
+apply from: 'publish.gradle'
+
+group 'com.chillycheesy'
+version project_version
+
+module {
+    authors = ['ChillyCheesy']
+    main = 'com.chillycheesy.socket.SocketModule'
+    moduloVersion = modulo_version
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.chillycheesy:modulo-api:$modulo_version"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+}
+
+test {
+    useJUnitPlatform()
+}
