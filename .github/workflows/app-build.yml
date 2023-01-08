@@ -41,10 +41,10 @@ jobs:
         run: |
           version_line=$(cat gradle.properties | grep modulo_version)
           sed -i -e "s/$version_line/$version_line-SNAPSHOT/g" gradle.properties
-#      - name: 🐭 Deploy maven-central
-#        run: |
-#          chmod +x gradlew
-#          ./gradlew clean publish
+      - name: 🐭 Deploy maven-central
+        run: |
+          chmod +x gradlew
+          ./gradlew clean publish
       - name: Setup release title
         if: github.ref == 'refs/heads/master'
         run: echo "TITLE=$(cat variables.gradle | grep project_version | cut -d '=' -f 2 | sed 's/ //g' | sed s/\'//g)" >> $GITHUB_ENV
