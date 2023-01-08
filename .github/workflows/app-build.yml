@@ -50,7 +50,7 @@ jobs:
         run: echo "TITLE=$(cat variable.gradle | grep project_version | cut -d '=' -f 2 | sed 's/ //g' | sed s/\'//g)" >> $GITHUB_ENV
       - name: Create release
         if: github.ref == 'refs/heads/master'
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ env.TITLE }}
